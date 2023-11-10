@@ -49,15 +49,15 @@
 
   <header id="Home">
     <div class="Form-box">
-      <form action="">
+      <form action="" name="myForm">
         <h3 class="class-heading">REQUEST TO CALL</h3>
-        <input type="text" id="name" name="name" required placeholder="Name">
-        <input type="email" id="email" name="email" required placeholder="Email">
-        <input type="tel" id="phone" name="phone" required placeholder="Phone No">
-        <div>
-          <button class="custom-btn">Submit</button>
-          <a href="tel:7083590191" class="call">Call</a>
-        </div>
+        <input type="text" id="name" name="Name" required placeholder="Name">
+        <input type="email" id="email" name="Email" required placeholder="Email">
+        <input type="tel" id="phone" name="Phone" required placeholder="Phone No">
+
+        <button class="custom-btn" type="submit">Submit</button>
+        <a href="tel:9595265541" class="call">Call</a>
+
       </form>
     </div>
     <div class="img-box" style="display: flex; justify-content: space-between;">
@@ -206,7 +206,17 @@
     </p>
     <p>&copy; 2023 By Nikhil Manke. All rights reserved.</p>
   </footer>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwUVruPvK5hQWKBD13sTJbfkfekUquepzV1X8KG1j1zyg7nDvQKTMGV6aXAWahvMCWlBQ/exec'
+    const form = document.forms['myForm']
 
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
   <script src="script.js"></script>
 </body>
 
